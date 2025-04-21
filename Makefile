@@ -1,7 +1,7 @@
 PORT := 11434
 OLLAMA_HOST := localhost:$(PORT)
 SSH_HOST := ssh.lightning.ai
-
+Model := gemma3:12b
 
 # ----------------- Server -----------------
 install:
@@ -12,14 +12,10 @@ serve:
 	OLLAMA_HOST=${OLLAMA_HOST} ollama serve
 
 serve-docker:
-	docker run \
-	-d \
-	-v \
-	--gpus=all \
-	ollama:/root/.ollama \
-	-p ${PORT}:${PORT} \
-	--name ollama \
-	ollama/ollama	
+	docker run -d -v ollama:/root/.ollama -p ${PORT}:${PORT} --name ollama ollama/ollama
+
+pull-docker:
+	docker exec -it ollama ollama pull ${MODEL}
 
 # ----------------- Client -----------------
 
