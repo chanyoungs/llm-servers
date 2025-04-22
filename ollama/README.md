@@ -1,0 +1,2 @@
+# Ollama
+See Makefile

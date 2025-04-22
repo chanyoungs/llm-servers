@@ -1,7 +1,8 @@
 PORT := 11434
 OLLAMA_HOST := localhost:$(PORT)
-SSH_HOST := ssh.lightning.ai
 MODEL := gemma3:12b
+USER := s_01jsdh5qsdrnyp7a16df8ftzsr
+HOST := ssh.lightning.ai
 
 # ----------------- Server -----------------
 install:
@@ -22,7 +23,7 @@ logs-docker:
 # ----------------- Client -----------------
 
 ssh-tunnel:
-	ssh -N -L ${PORT}:localhost:${PORT} ${SSH_USER}@${SSH_HOST} -p ${PORT}
+	ssh -N -L ${PORT}:localhost:${PORT} ${USER}@${HOST}
 
 run:
 	export OLLAMA_HOST=${OLLAMA_HOST}

@@ -1,2 +1,1 @@
-# ollama
-See Makefile
+# LLM Servers
