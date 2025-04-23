@@ -13,7 +13,7 @@ serve:
 	OLLAMA_HOST=${OLLAMA_HOST} ollama serve
 
 serve-docker:
-	docker run -d -v ollama:/root/.ollama -p ${PORT}:${PORT} --name ollama ollama/ollama
+	docker run -d --gpus=all  -v ollama:/root/.ollama -p ${PORT}:${PORT} --name ollama ollama/ollama
 
 pull-docker:
 	docker exec ollama ollama pull ${MODEL}
